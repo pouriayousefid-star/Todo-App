@@ -99,7 +99,7 @@
 						oninput={editTodo}
 						type="text"
 						value={todo.text}
-						class="w-full px-3 placeholder:text-[#9CA3AF] text-[#F9FAFB] text-2xl {todo.done && 'done'}"
+						class="w-full px-3 placeholder:text-[#9CA3AF] text-[#F9FAFB] text-2xl {todo.done && filter != "completed" ? 'done' : '' }"
 					/>
 					<input
 						data-index={i}
