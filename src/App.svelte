@@ -60,7 +60,7 @@
 		</div>
 	</div>
 	<div
-		class="add-todo-box w-full h-22 bg-[#252835] mt-6 rounded-2xl py-4 px-5 border border-[#3A3F4D]"
+		class="add-todo-box w-full h-22 bg-[#252835]/30 backdrop-blur-md mt-6 rounded-2xl py-4 px-5 border border-[#3A3F4D]"
 	>
 		<div
 			class="add-todo-input w-full h-full border border-[#3A3F4D] rounded-2xl bg-[#262A36] flex items-center p-3"
@@ -88,7 +88,7 @@
 	</div>
 	{#if todos.length != 0}
 		<div
-			class="tasks w-full bg-[#252835] mt-6 rounded-2xl py-4 px-5 border border-[#3A3F4D] flex flex-col gap-4"
+			class="tasks w-full bg-[#252835]/30 backdrop-blur-md mt-6 rounded-2xl py-4 px-5 border border-[#3A3F4D] flex flex-col gap-4"
 		>
 			{#each filteredTodos as todo, i}
 				<div
