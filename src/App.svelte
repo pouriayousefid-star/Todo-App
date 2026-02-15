@@ -1,4 +1,5 @@
 <script>
+	import { slide } from "svelte/transition";
 	import "./app.css";
 	let todos = $state([]);
 	let filter = $state("all");
@@ -86,12 +87,12 @@
 			/>
 		</div>
 	</div>
-	{#if todos.length != 0}
 		<div
 			class="tasks w-full bg-[#252835]/30 backdrop-blur-md mt-6 rounded-2xl py-4 px-5 border border-[#3A3F4D] flex flex-col gap-4"
 		>
 			{#each filteredTodos as todo, i}
 				<div
+					transition:slide
 					class="todo w-full h-full border border-[#3A3F4D] rounded-2xl bg-[#262A36] flex items-center p-5"
 				>
 					<input
@@ -114,7 +115,6 @@
 				<p class="text-[#F9FAFB] text-3xl">Nothing...</p>
 			{/if}
 		</div>
-	{/if}
 	<div class="filters mt-5 flex gap-3">
 		{#if todos.length != 0}
 			<button onclick={() => setFilter("all")} class="btn">All</button>
