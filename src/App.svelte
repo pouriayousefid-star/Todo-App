@@ -4,6 +4,7 @@
 	import TodoHeader from "./lib/Components/TodoHeader.svelte";
 	import TodoList from "./lib/Components/TodoList.svelte";
 	import FilterBtn from "./lib/Components/FilterBtn.svelte";
+	import ProgressBar from "./lib/Components/ProgressBar.svelte";
 	
 	let todos = $state([]);
 	let filter = $state("all");
@@ -48,8 +49,9 @@
 <div class="todo-window w-180">
 	<TodoHeader />
 	<AddTodo {addTodo}/>
+	<ProgressBar {todos} {filteredTodos} {filter}/>
 	<TodoList {filter} {editTodo} {toggleTodo} todos={filteredTodos}/>
-	<FilterBtn {setFilter} {todos}/>
+	<FilterBtn {setFilter} {todos} {filter}/>
 </div>
 
 <style lang="postcss">
