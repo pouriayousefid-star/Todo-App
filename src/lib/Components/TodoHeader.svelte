@@ -1,4 +1,4 @@
-<div class="todo-header w-full flex justify-between px-3">
+<div class="todo-header w-full flex justify-between items-center px-3">
 	<h1 class="text-3xl text-[#F9FAFB]">My Tasks</h1>
 	<div class="setting flex gap-1 justify-center">
 		<svg

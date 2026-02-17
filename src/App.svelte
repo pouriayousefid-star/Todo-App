@@ -9,7 +9,6 @@
 	let todos = $state([]);
 	let filter = $state("all");
 	let filteredTodos = $derived(filterTodos());
-
 	function addTodo(event) {
 		if (event.key !== "Enter") return;
 		const id = crypto.randomUUID();
@@ -24,7 +23,7 @@
 	}
 	function editTodo(event) {
 		const inputEl = event.target;
-		const index = +inputEl.dataset.index;
+		const index = inputEl.dataset.index;
 		todos = todos.map((todo) =>
 			todo.id === index ? { ...todo, text: inputEl.value } : todo,
 		);
@@ -37,19 +36,18 @@
 	function setFilter(newFilter) {
 		filter = newFilter;
 	}
-	function filterTodos(progress = false) {
-		if (progress) {
-			return todos.filter((todo) => todo.done);
-		} else {
-			switch (filter) {
-				case "all":
-					return todos;
-				case "active":
-					return todos.filter((todo) => !todo.done);
-				case "completed":
-					return todos.filter((todo) => todo.done);
-			}
+	function filterTodos() {
+		switch (filter) {
+			case "all":
+				return todos;
+			case "active":
+				return todos.filter((todo) => !todo.done);
+			case "completed":
+				return todos.filter((todo) => todo.done);
 		}
+	}
+	function getCompletedTodos() {
+		return todos.filter((todo) => todo.done);
 	}
 	function removeTodo(id) {
 		todos = todos.filter((todo) => todo.id !== id);
@@ -60,7 +58,7 @@
 	<TodoHeader />
 	<AddTodo {addTodo} />
 	{#if todos.length > 0}
-		<ProgressBar {todos} {filterTodos} />
+		<ProgressBar {todos} {getCompletedTodos} />
 	{/if}
 	<TodoList
 		{filter}
@@ -69,7 +67,7 @@
 		todos={filteredTodos}
 		{removeTodo}
 	/>
-	<FilterBtn {setFilter} {todos} {filter} {filterTodos} />
+	<FilterBtn {setFilter} {todos} {filter} {getCompletedTodos} />
 </div>
 
 <style lang="postcss">

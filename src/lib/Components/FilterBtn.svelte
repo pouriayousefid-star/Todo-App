@@ -1,5 +1,5 @@
 <script>
-	let { setFilter, todos, filter, filterTodos } = $props();
+	let { setFilter, todos, filter, getCompletedTodos } = $props();
 </script>
 
 <div class="filters mt-5 flex gap-3 items-center">
@@ -19,7 +19,7 @@
 			>Completed</button
 		>
 		<p class="text-xl text-[#F9FAFB]">
-			Remaining: {todos.length - filterTodos(true).length}
+			Remaining: {todos.length - getCompletedTodos().length}
 		</p>
 	{/if}
 </div>
