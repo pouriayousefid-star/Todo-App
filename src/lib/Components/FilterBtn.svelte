@@ -7,8 +7,8 @@
 		<button onclick={() => setFilter("active")} class="btn {filter == "active" ? 'bg-blue-900' : 'bg-[#2B313E]'}">Active</button>
 		<button onclick={() => setFilter("completed")} class="btn {filter == "completed" ? 'bg-blue-900' : 'bg-[#2B313E]'}">Completed</button
 		>
+		<p class="text-xl text-[#F9FAFB]">Remaining: {todos.length - filterTodos(true).length}</p>
 	{/if}
-	<p class="text-xl text-[#F9FAFB]">Remaining: {todos.length - filterTodos(true).length}</p>
 </div>
 <style lang="postcss">
 	@reference "tailwindcss";

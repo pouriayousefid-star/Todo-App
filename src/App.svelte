@@ -8,9 +8,8 @@
 
 	let todos = $state([]);
 	let filter = $state("all");
-
 	let filteredTodos = $derived(filterTodos());
-
+	let id = $state(0); // for tell svelte that every task has uniqe id (see bug if i use key in each block in todolist component)
 	function addTodo(event) {
 		if (event.key !== "Enter") return;
 		
@@ -19,12 +18,10 @@
 		const done = false;
 
 		if(text !== ''){
-			todos = [...todos, { text, done }];
+			todos = [...todos, { text, done , id}];
+			id++;
 		}
 		todoEl.value = "";
-	}
-	function addTodoWithclick(){
-		AddTodo
 	}
 	function editTodo(event) {
 		const inputEl = event.target;
@@ -33,7 +30,7 @@
 	}
 	function toggleTodo(event) {
 		const inputEl = event.target;
-		const index = +inputEl.dataset.index;
+		const index = +inputEl.dataset.index; // use uniqe id 
 		todos[index].done = !todos[index].done;
 	}
 	function setFilter(newFilter) {
